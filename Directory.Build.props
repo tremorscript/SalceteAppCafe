@@ -10,8 +10,8 @@
 
   <!-- Shared NuGet Package info -->
   <PropertyGroup>
-    <Authors>Fabulous contributors</Authors>
-    <PackageTags>Fabulous;F#;Declarative UI;MVU;Avalonia;Android;iOS;macOS;Windows;Linux</PackageTags>
+    <Authors>tremorscript</Authors>
+    <PackageTags>SalceteAppCafe;AppCafe;Declarative UI;MVU;Avalonia;Android;iOS;macOS;Windows;Linux</PackageTags>
     <PackageIcon>nuget-icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>

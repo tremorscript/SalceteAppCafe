@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net8.0;</TargetFrameworks>
+    <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AvaloniaPlatform>$([MSBuild]::GetTargetPlatformIdentifier($(TargetFramework)))</AvaloniaPlatform>
+    <AvaloniaPlatform Condition="'$(AvaloniaPlatform)' == ''">Desktop</AvaloniaPlatform>
+  </PropertyGroup>
+  <!-- https://github.com/xamarin/xamarin-macios/issues/18469 -->
+  <ItemGroup>
+    <Compile Include="App.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\**" />
+  </ItemGroup>
+  <ItemGroup Condition="$(AvaloniaPlatform) == 'Desktop'">
+    <Compile Include="$(DesktopPlatformFolder)Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Desktop" />
+    <PackageReference Include="Avalonia.Themes.Fluent"/>
+    <PackageReference Include="FSharp.Core" />
+    <PackageReference Include="Fabulous" />
+    <PackageReference Include="Fabulous.Avalonia" />
+  </ItemGroup>
+</Project>
