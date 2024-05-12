@@ -23,8 +23,4 @@
   <ItemGroup>
     <EditorConfigFiles Remove="D:\source\repos\tremorscript\SalceteAppCafe\SalceteAppCafe.UI\.editorconfig" />
   </ItemGroup>
-
-  <ItemGroup>
-    <None Include="D:\source\repos\tremorscript\SalceteAppCafe\SalceteAppCafe.UI\.editorconfig" />
-  </ItemGroup>
 </Project>
