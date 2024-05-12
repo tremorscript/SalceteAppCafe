@@ -1,7 +1,15 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Program.cs" company="SalceteAppCafe">
+//     Author: Trelston Moraes
+//     Copyright (c) SalceteAppCafe. All rights reserved.
+//     License: GNU General Public License v3.0.
+// </copyright>
+//-----------------------------------------------------------------------
 
 using Avalonia;
+
 using Avalonia.ReactiveUI;
+using System;
 
 namespace SalceteAppCafe.UI.Desktop;
 
