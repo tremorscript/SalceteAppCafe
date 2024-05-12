@@ -15,8 +15,16 @@
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Themes.Fluent" />
     <PackageReference Include="Avalonia.Fonts.Inter" />
-    <PackageReference Include="Avalonia.ReactiveUI"/>
+    <PackageReference Include="Avalonia.ReactiveUI" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\source\repos\tremorscript\SalceteAppCafe\SalceteAppCafe.UI\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="D:\source\repos\tremorscript\SalceteAppCafe\SalceteAppCafe.UI\.editorconfig" />
   </ItemGroup>
 </Project>
