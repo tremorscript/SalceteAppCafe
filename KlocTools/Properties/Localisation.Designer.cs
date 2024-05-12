@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Klocman.Properties {
+namespace KlocTools.Properties {
     using System;
     
     
