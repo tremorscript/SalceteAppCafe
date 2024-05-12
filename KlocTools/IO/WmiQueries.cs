@@ -3,10 +3,8 @@
     Apache License Version 2.0
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management;
+using EnumerationOptions = System.Management.EnumerationOptions;
 
 namespace Klocman.IO
 {

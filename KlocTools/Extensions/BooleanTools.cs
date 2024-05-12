@@ -3,6 +3,9 @@
     Apache License Version 2.0
 */
 
+using System.Windows.Forms;
+using Klocman.Properties;
+using Klocman.Resources;
 
 namespace Klocman.Extensions
 {
@@ -13,7 +16,7 @@ namespace Klocman.Extensions
         /// </summary>
         public static string ToYesNo(this bool value)
         {
-            return value ? "Yes" : "No";
+            return value ? Localisation.Yes : Localisation.No;
         }
 
         /// <summary>
@@ -22,7 +25,7 @@ namespace Klocman.Extensions
         /// </summary>
         public static string ToYesNo(this bool? value)
         {
-            return value.HasValue ? value.Value.ToYesNo() : "";
+            return value.HasValue ? value.Value.ToYesNo() : CommonStrings.Unknown;
         }
     }
 }
