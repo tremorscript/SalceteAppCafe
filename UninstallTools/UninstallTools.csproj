@@ -28,11 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Localisation.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Localisation.resx</DependentUpon>
-    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -42,8 +37,7 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Properties\Localisation.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Localisation.Designer.cs</LastGenOutput>
+      <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
