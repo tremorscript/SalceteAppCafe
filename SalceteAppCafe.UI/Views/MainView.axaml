@@ -2,15 +2,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:controls="using:SalceteAppCafe.UI.HamburgerMenu"
+             xmlns:models="using:SalceteAppCafe.UI.Models"
+             xmlns:pages="using:SalceteAppCafe.UI.Pages"
              xmlns:vm="clr-namespace:SalceteAppCafe.UI.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:views="using:SalceteAppCafe.UI.Views"
              x:Class="SalceteAppCafe.UI.Views.MainView"
              x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
+		<vm:MainViewModel />
+	</Design.DataContext>
 
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	<Grid>
+		<Grid.Styles>
+			<Style Selector="TextBlock.h2">
+				<Setter Property="TextWrapping" Value="Wrap" />
+				<Setter Property="MaxWidth" Value="400" />
+				<Setter Property="HorizontalAlignment" Value="Left" />
+			</Style>
+		</Grid.Styles>
+		<controls:HamburgerMenu Name="Sidebar">
+			<TabItem Header="App Manager">
+				<pages:AppManagerPage />
+			</TabItem>
+			<TabItem Header="Bookmarks Manager">
+				<pages:BookmarksManagerPage />
+			</TabItem>
+		</controls:HamburgerMenu>
+	</Grid>
+
 </UserControl>
