@@ -3,19 +3,17 @@
     Apache License Version 2.0
 */
 
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Xml.Serialization;
 using Klocman.Extensions;
 using Klocman.IO;
 using Klocman.Localising;
 using Klocman.Tools;
 using Microsoft.Win32;
+using System;
+using System.Drawing;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Xml.Serialization;
 using UninstallTools.Factory;
 using UninstallTools.Factory.InfoAdders;
 using UninstallTools.Lists;

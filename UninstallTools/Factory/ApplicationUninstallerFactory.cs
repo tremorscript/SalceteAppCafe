@@ -3,16 +3,14 @@
     Apache License Version 2.0
 */
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using Klocman.Extensions;
 //using Klocman.Forms.Tools;
 using Klocman.IO;
 using Klocman.Tools;
+using System;
+using System.Diagnostics;
+using System.Linq;
 using UninstallTools.Factory.InfoAdders;
-using UninstallTools.Properties;
 using UninstallTools.Startup;
 
 namespace UninstallTools.Factory
@@ -105,7 +103,7 @@ namespace UninstallTools.Factory
                 //var miscProgress = new ListGenerationProgress(currentStep++, totalStepCount, Localisation.Progress_AppStores);
                 //callback(miscProgress);
                 var otherResults = GetMiscUninstallerEntries();
-    
+
                 // Handle duplicate entries ----------------------------------------------------------------------------------
                 //var mergeProgress = new ListGenerationProgress(currentStep++, totalStepCount, Localisation.Progress_Merging);
                 //callback(mergeProgress);
