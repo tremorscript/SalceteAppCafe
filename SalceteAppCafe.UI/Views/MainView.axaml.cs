@@ -7,7 +7,6 @@
 //-----------------------------------------------------------------------
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using SalceteAppCafe.UI.Pages;
 
 namespace SalceteAppCafe.UI.Views;
 
@@ -15,8 +14,8 @@ public partial class MainView : UserControl
 {
     public MainView()
     {
-        //InitializeComponent();
-        AvaloniaXamlLoader.Load(this);
+        InitializeComponent();
+        //AvaloniaXamlLoader.Load(this);
 
     }
 }

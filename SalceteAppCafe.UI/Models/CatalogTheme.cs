@@ -1,8 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="CatalogTheme.cs" company="SalceteAppCafe">
+//     Author: Trelston Moraes
+//     Copyright (c) SalceteAppCafe. All rights reserved.
+//     License: GNU General Public License v3.0.
+// </copyright>
+//-----------------------------------------------------------------------
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SalceteAppCafe.UI.Models
 {

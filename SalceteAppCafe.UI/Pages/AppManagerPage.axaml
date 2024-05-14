@@ -2,7 +2,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:m="using:SalceteAppCafe.UI.Models"
+             xmlns:vm="using:SalceteAppCafe.UI.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:AppManagerPageViewModel"
              x:Class="SalceteAppCafe.UI.Pages.AppManagerPage">
-This is the App Manager Page
+	<StackPanel>
+		<TreeDataGrid Name="AppManagerGrid"
+					  Source="{Binding InstalledApps}"
+					  CanUserResizeColumns="True"
+					  CanUserSortColumns="True"
+					  ClipToBounds="True">
+			<TreeDataGrid.Styles>
+				<Style Selector="TreeDataGrid TreeDataGridRow:nth-last-child(2n)">
+					<Setter Property="Background" Value="#20808080"/>
+				</Style>
+				<Style Selector="TreeDataGrid TreeDataGridColumnHeader">
+					<Setter Property="TextBlock.FontWeight" Value="Bold"/>
+				</Style>
+			</TreeDataGrid.Styles>
+		</TreeDataGrid>
+	</StackPanel>
 </UserControl>
