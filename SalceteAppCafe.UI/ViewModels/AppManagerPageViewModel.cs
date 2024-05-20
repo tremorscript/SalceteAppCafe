@@ -32,30 +32,43 @@ namespace SalceteAppCafe.UI.ViewModels
         public FlatTreeDataGridSource<InstalledAppsEntry> Source { get; set; }
 
         [ObservableProperty]
-        public string? displayName;
+        public int currentStepValue;
 
         [ObservableProperty]
-        public int progressValue;
+        public string? currentStepMessage;
 
+        [ObservableProperty]
+        public int totalStepCount;
+
+        [ObservableProperty]
+        public bool isReporterVisible = true;
         public AppManagerPageViewModel()
         {
-            DisplayName = "Test Mame";
-            ProgressValue = 0;
             Source = new FlatTreeDataGridSource<InstalledAppsEntry>(new List<InstalledAppsEntry>());
+            currentStepMessage = "Fetching the list of installed applications.";
+            totalStepCount = 8;
         }
 
+        partial void OnCurrentStepValueChanged(int oldValue, int newValue)
+        {
+            if (newValue == TotalStepCount) {
+                IsReporterVisible = false; 
+            }
+        }
 
         [RelayCommand]
         private async Task Refresh()
         {
-
             await this.InstalledApps;
         }
 
         public async Task<FlatTreeDataGridSource<InstalledAppsEntry>> PopulateInstalledApplicationsAsync()
         {
-            ProgressValue = 2;
-            var installedAppsEntries = await Task.Run(() => ApplicationUninstallerFactory.GetUninstallerEntries());
+            CurrentStepValue = 1;
+            IsReporterVisible = true;
+            IProgress<int> progressReporter = new Progress<int>(val => CurrentStepValue = val);
+
+            var installedAppsEntries = await Task.Run(() => ApplicationUninstallerFactory.GetUninstallerEntries(progressReporter));
 
             var install = installedAppsEntries.Select(x => new InstalledAppsEntry
             {
