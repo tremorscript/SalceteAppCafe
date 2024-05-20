@@ -3,6 +3,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1" />
     <PackageVersion Include="Microsoft.VisualBasic" Version="10.3.0" />
@@ -22,6 +23,11 @@
     <PackageVersion Include="Avalonia.Controls.ColorPicker" Version="11.0.10" />
     <PackageVersion Include="Avalonia.Controls.DataGrid" Version="11.0.10" />
     <PackageVersion Include="Avalonia.Controls.TreeDataGrid" Version="11.0.10" />
+    <PackageVersion Include="Avalonia.Xaml.Behaviors" Version="11.0.10" />
+    <PackageVersion Include="Avalonia.Xaml.Interactivity " Version="11.0.10" />
+    <PackageVersion Include="Avalonia.Xaml.Interactions" Version="11.0.10" />
+    <PackageVersion Include="ReactiveUI.Fody" Version="19.5.41" />
+    <PackageVersion Include="ReactiveUI.Validation" Version="4.0.9" />
     <PackageVersion Include="System.Diagnostics.PerformanceCounter" Version="8.0.0" />
     <PackageVersion Include="System.Drawing.Common" Version="8.0.4" />
     <PackageVersion Include="System.Management" Version="8.0.0" />

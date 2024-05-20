@@ -172,7 +172,7 @@ namespace UninstallTools.Factory
                 //    //PremadeDialogs.GenericError(ex);
                 //}
 
-                return mergedResults;
+                return new List<ApplicationUninstallerEntry>(mergedResults);
             }
             finally
             {

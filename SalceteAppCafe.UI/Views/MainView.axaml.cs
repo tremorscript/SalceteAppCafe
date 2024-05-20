@@ -6,7 +6,6 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 
 namespace SalceteAppCafe.UI.Views;
 

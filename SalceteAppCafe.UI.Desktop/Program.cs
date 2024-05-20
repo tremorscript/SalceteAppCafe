@@ -8,7 +8,6 @@
 
 using Avalonia;
 
-using Avalonia.ReactiveUI;
 using System;
 
 namespace SalceteAppCafe.UI.Desktop;
@@ -27,6 +26,5 @@ class Program
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
-            .LogToTrace()
-            .UseReactiveUI();
+            .LogToTrace();
 }
