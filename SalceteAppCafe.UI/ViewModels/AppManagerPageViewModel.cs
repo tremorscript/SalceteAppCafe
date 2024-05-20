@@ -1,44 +1,91 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿//-----------------------------------------------------------------------
+// <copyright file="AppManagerPageViewModel.cs" company="SalceteAppCafe">
+//     Author: Trelston Moraes
+//     Copyright (c) SalceteAppCafe. All rights reserved.
+//     License: GNU General Public License v3.0.
+// </copyright>
+//-----------------------------------------------------------------------
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Models.TreeDataGrid;
 using Avalonia.Controls.Selection;
-using ReactiveUI;
+using Avalonia.Threading;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using SalceteAppCafe.UI.Models;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Linq;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
 using UninstallTools.Factory;
 
 namespace SalceteAppCafe.UI.ViewModels
 {
-    public class AppManagerPageViewModel : ReactiveObject
+    public partial class AppManagerPageViewModel : ObservableObject
     {
-        private readonly ObservableCollection<InstalledAppsEntry> _data;
-        public FlatTreeDataGridSource<InstalledAppsEntry> InstalledApps { get; }
+        public Task<FlatTreeDataGridSource<InstalledAppsEntry>> InstalledApps => PopulateInstalledApplicationsAsync();
 
-        public string DisplayName { get; set; }
+        public FlatTreeDataGridSource<InstalledAppsEntry> Source { get; set; }
+
+        [ObservableProperty]
+        public int currentStepValue;
+
+        [ObservableProperty]
+        public string? currentStepMessage;
+
+        [ObservableProperty]
+        public int totalStepCount;
+
+        [ObservableProperty]
+        public bool isReporterVisible = true;
         public AppManagerPageViewModel()
         {
-            DisplayName = "Test Mame";
-            var installedAppsEntries =
-                  ApplicationUninstallerFactory.GetUninstallerEntries()
-                 .Select(x => new InstalledAppsEntry
-                 {
-                     AppName = x.DisplayNameTrimmed,
-                     EstimatedSize = x.EstimatedSize.ToString(),
-                     Publisher = x.PublisherTrimmed,
-                     VersionNumber = x.DisplayVersion,
-                     InstallDate = x.InstallDate,
-                     InstallLocation = x.InstallLocation,
-                     UninstallString = x.UninstallString,
-                 });
+            Source = new FlatTreeDataGridSource<InstalledAppsEntry>(new List<InstalledAppsEntry>());
+            currentStepMessage = "Fetching the list of installed applications.";
+            totalStepCount = 8;
+        }
 
-            _data = new ObservableCollection<InstalledAppsEntry>(installedAppsEntries);
+        partial void OnCurrentStepValueChanged(int oldValue, int newValue)
+        {
+            if (newValue == TotalStepCount) {
+                IsReporterVisible = false; 
+            }
+        }
 
-            InstalledApps = new FlatTreeDataGridSource<InstalledAppsEntry>(_data)
+        [RelayCommand]
+        private async Task Refresh()
+        {
+            await this.InstalledApps;
+        }
+
+        public async Task<FlatTreeDataGridSource<InstalledAppsEntry>> PopulateInstalledApplicationsAsync()
+        {
+            CurrentStepValue = 1;
+            IsReporterVisible = true;
+            IProgress<int> progressReporter = new Progress<int>(val => CurrentStepValue = val);
+
+            var installedAppsEntries = await Task.Run(() => ApplicationUninstallerFactory.GetUninstallerEntries(progressReporter));
+
+            var install = installedAppsEntries.Select(x => new InstalledAppsEntry
+            {
+                AppName = x.DisplayNameTrimmed,
+                EstimatedSize = x.EstimatedSize.ToString(),
+                Publisher = x.PublisherTrimmed,
+                VersionNumber = x.DisplayVersion,
+                InstallDate = x.InstallDate,
+                InstallLocation = x.InstallLocation,
+                UninstallString = x.UninstallString,
+            });
+
+            var grid = new FlatTreeDataGridSource<InstalledAppsEntry>(
+                               new ObservableCollection<InstalledAppsEntry>(install))
             {
                 Columns =
                 {
-                    new TextColumn<InstalledAppsEntry,string>("Name", x => x.AppName),
                     new TextColumn<InstalledAppsEntry, string>("Name",
                     x => x.AppName,
                     new GridLength(6, GridUnitType.Star), new()
@@ -53,7 +100,16 @@ namespace SalceteAppCafe.UI.ViewModels
                 }
 
             };
-            InstalledApps.RowSelection!.SingleSelect = true;
+
+            grid.RowSelection!.SingleSelect = true;
+            this.Source = grid;
+            return grid;
+        }
+
+        [RelayCommand]
+        private void UninstallApplication()
+        {
+            var selection = ((ITreeSelectionModel)Source!.Selection!).SelectedItem as InstalledAppsEntry;
         }
     }
 }

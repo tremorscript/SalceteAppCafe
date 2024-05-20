@@ -5,11 +5,12 @@
 //     License: GNU General Public License v3.0.
 // </copyright>
 //-----------------------------------------------------------------------
-using ReactiveUI;
+
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SalceteAppCafe.UI.ViewModels;
 
-public class ViewModelBase : ReactiveObject
+public class ViewModelBase : ObservableObject
 {
     public int Test { get; set; }
 }
